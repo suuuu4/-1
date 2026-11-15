@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>超狂方格 GridRunner - 免責聲明同意書</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif; background-color: #f4f6f8; color: #222; padding: 15px 10px; }
+    .container { max-width: 680px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 22px 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); }
+    
+    h2 { text-align: center; font-size: 19px; margin-bottom: 4px; }
+    .title-sub { text-align: center; font-size: 15px; font-weight: bold; margin-bottom: 15px; color: #333; }
+    .intro { font-size: 13.5px; line-height: 1.6; margin-bottom: 12px; color: #333; }
+    
+    .terms-wrapper {
+      background-color: #fafbfc; border: 1px solid #e1e4e8; border-radius: 8px; padding: 16px 14px 16px 30px; margin-bottom: 20px; font-size: 13.5px; line-height: 1.7;
+    }
+    .terms-wrapper li { margin-bottom: 8px; }
+
+    .date-badge {
+      display: inline-block; background-color: #e9ecef; padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: bold; margin-bottom: 15px; color: #495057;
+    }
+
+    .participant-card {
+      border: 1px solid #d0d7de; border-radius: 8px; padding: 15px; margin-bottom: 16px; background-color: #fff;
+    }
+    .card-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px dashed #eee; padding-bottom: 6px;
+    }
+    .card-title { font-size: 15px; font-weight: bold; color: #007aff; }
+    .btn-remove { background: #ffeef0; color: #d73a49; border: 1px solid #ffccd1; border-radius: 4px; padding: 2px 8px; font-size: 12px; cursor: pointer; }
+
+    .form-row { display: flex; gap: 10px; margin-bottom: 10px; }
+    .form-col { flex: 1; }
+    label { display: block; font-size: 12.5px; font-weight: 600; margin-bottom: 4px; color: #333; }
+    input[type="text"], input[type="tel"], select {
+      width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; outline: none; background-color: #fff;
+    }
+    input:focus, select:focus { border-color: #007aff; }
+
+    /* 生日三下拉選單排版 */
+    .birth-group { display: flex; gap: 6px; }
+    .birth-group select { flex: 1; padding: 10px 4px; }
+
+    .sign-section { margin-top: 10px; }
+    .canvas-wrap { border: 2px dashed #bbb; border-radius: 6px; background: #fff; touch-action: none; position: relative; }
+    canvas { width: 100%; height: 110px; display: block; }
+    .clear-link { display: inline-block; margin-top: 5px; color: #d00000; font-size: 12px; cursor: pointer; text-decoration: underline; }
+
+    .btn-add {
+      width: 100%; background: #f0f7ff; color: #007aff; border: 1.5px dashed #007aff; padding: 12px; font-size: 14px; font-weight: bold; border-radius: 8px; cursor: pointer; margin-bottom: 20px;
+    }
+    .agree-box {
+      margin-bottom: 20px; font-size: 13.5px; font-weight: bold; color: #d90429; display: flex; align-items: center; cursor: pointer;
+    }
+    .agree-box input { width: 18px; height: 18px; margin-right: 8px; }
+
+    .btn-submit {
+      width: 100%; background: #007aff; color: #fff; border: none; padding: 15px; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,122,255,0.3);
+    }
+
+    #loadingOverlay {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.92); z-index: 999; flex-direction: column; align-items: center; justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>超狂方格 GridRunner</h2>
+  <div class="title-sub">風險告知與免責聲明同意書</div>
+  
+  <p class="intro">立聲明書人(以下稱本人)，參與本場館活動，已了解本活動屬具身體活動性質，並同意以下事項：</p>
+
+  <div class="terms-wrapper">
+    <ol>
+      <li>本人身體健康，適合參與本運動遊戲。無心臟病、癲癇、懷孕等不宜活動之病症。如有特殊狀況，已諮詢專業醫師並自我評估，確認風險與能力，且未隱瞞任何健康問題。</li>
+      <li>本人同意自行承擔遊戲中因自身或他人行為、器材設施不熟悉、身體或飲食等因素導致的所有風險與損害，並放棄向場館方求償或追責。如本人造成他人損失，願全權負責賠償，場館方不負任何責任。</li>
+      <li>本人了解不宜於過飽、飲食後或身體不適時進行劇烈活動。<br>如因個人狀況(包含但不限於飲食、體能)導致嘔吐或場地污染，應負清潔及相關費用($500-$1000)，並配合場館處理。</li>
+      <li>本人承諾遵守所有使用規則，不從事危險行為，並聽從工作人員指示。違規者將被終止參加資格並請求離場，費用不予退還，亦不得異議。如造成損傷或損壞，將全額負責賠償。</li>
+      <li>本人同意場館方於活動中過程中拍照、錄影，可用於IG或FB等宣傳用途，使用權利永久且無限制。</li>
+      <li>本人確認報名自願，費用繳交後不予退還，亦不得要求異議。</li>
+      <li>本人知悉禁止攜帶食物或飲品入場，若致場地污損或設備損壞，願承擔清潔或維修費用($500-$10000)。</li>
+      <li>本人已詳閱本同意書，完全理解並同意遵守其內容，所填寫之資料皆為真實無誤。</li>
+      <li>場館方承諾妥善保護參與者所提供之個人資訊，並僅於必要情況下使用。</li>
+      <li>如因參與本活動或本書面事宜涉訟，本人同意以台南地方法院為第一審管轄法院。</li>
+      <li>本同意書事項如有未盡之事宜，得由場館方修正公佈之。</li>
+      <li>未成年參與者可由法定代理人或監護人代表簽署本同意書。</li>
+    </ol>
+  </div>
+
+  <div class="date-badge" id="todayBadge">簽署日期：系統自動帶入中...</div>
+
+  <form id="waiverForm">
+    <div id="participantsList"></div>
+
+    <button type="button" class="btn-add" id="btnAdd">+ 新增下一位同行參與者</button>
+
+    <label class="agree-box">
+      <input type="checkbox" id="agreeCheckbox" required>
+      全體參與者已詳細閱讀、理解並同意遵守上述所有條款
+    </label>
+
+    <button type="submit" class="btn-submit">確認並送出全體同意書</button>
+  </form>
+</div>
+
+<form id="hiddenForm" method="POST" target="hiddenIframe" style="display:none;">
+  <input type="hidden" name="data" id="hiddenDataInput">
+</form>
+<iframe name="hiddenIframe" id="hiddenIframe" style="display:none;"></iframe>
+
+<div id="loadingOverlay">
+  <p style="font-weight: bold; font-size: 16px;">正在儲存同意書至雲端，請稍候...</p>
+</div>
+
+<script>
+  // ===== 請在此填入你的 Google Apps Script 網頁應用程式網址 =====
+  const API_URL = "https://script.google.com/macros/s/AKfycbzoYoS6_3ifJB8Jui3xMnzOUyYWPSl3gRRWe9emDwVzxfe1yXeAxonWLwd7E4874HTi7g/exec";
+
+  document.getElementById("hiddenForm").action = API_URL;
+
+  const today = new Date();
+  const todayStr = `${today.getFullYear()}/${String(today.getMonth() + 1).padStart(2, '0')}/${String(today.getDate()).padStart(2, '0')}`;
+  document.getElementById("todayBadge").innerText = `簽署日期：${todayStr}（系統自動鎖定）`;
+
+  const participantsList = document.getElementById("participantsList");
+  let participantCount = 0;
+  const canvasInstances = {};
+
+  // 動態產出年份選單（2026 ~ 1940）
+  function generateYearOptions() {
+    let opts = '<option value="">年</option>';
+    const curYear = 2026;
+    for (let y = curYear; y >= 1940; y--) {
+      opts += `<option value="${y}">${y}</option>`;
+    }
+    return opts;
+  }
+
+  // 動態產出月份選單
+  function generateMonthOptions() {
+    let opts = '<option value="">月</option>';
+    for (let m = 1; m <= 12; m++) {
+      opts += `<option value="${String(m).padStart(2, '0')}">${m}月</option>`;
+    }
+    return opts;
+  }
+
+  // 動態產出日選單
+  function generateDayOptions() {
+    let opts = '<option value="">日</option>';
+    for (let d = 1; d <= 31; d++) {
+      opts += `<option value="${String(d).padStart(2, '0')}">${d}日</option>`;
+    }
+    return opts;
+  }
+
+  function addParticipant(isFirst = false) {
+    participantCount++;
+    const id = participantCount;
+
+    const card = document.createElement("div");
+    card.className = "participant-card";
+    card.id = `card-${id}`;
+
+    card.innerHTML = `
+      <div class="card-header">
+        <span class="card-title">第 ${id} 位參與者 ${isFirst ? '(代表)' : ''}</span>
+        ${!isFirst ? `<button type="button" class="btn-remove" onclick="removeParticipant(${id})">刪除此位</button>` : ''}
+      </div>
+
+      <div class="form-row">
+        <div class="form-col">
+          <label>中文姓名 (正楷輸入) *</label>
+          <input type="text" class="input-name" required placeholder="例如：王小明">
+        </div>
+        <div class="form-col">
+          <label>出生年月日 *</label>
+          <div class="birth-group">
+            <select class="birth-year" required>${generateYearOptions()}</select>
+            <select class="birth-month" required>${generateMonthOptions()}</select>
+            <select class="birth-day" required>${generateDayOptions()}</select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-col">
+          <label>手機號碼 *</label>
+          <input type="tel" class="input-phone" required placeholder="0912345678">
+        </div>
+        <div class="form-col">
+          <label>未成年之監護人姓名</label>
+          <input type="text" class="input-guardian" placeholder="成年人可免填">
+        </div>
+      </div>
+
+      <div class="sign-section">
+        <label>手寫正楷簽名 *</label>
+        <div class="canvas-wrap">
+          <canvas id="pad-${id}"></canvas>
+        </div>
+        <span class="clear-link" onclick="clearSignature(${id})">清除重簽</span>
+      </div>
+    `;
+
+    participantsList.appendChild(card);
+    initCanvas(id);
+  }
+
+  function initCanvas(id) {
+    const canvas = document.getElementById(`pad-${id}`);
+    const ctx = canvas.getContext("2d");
+    
+    const ratio = Math.max(window.devicePixelRatio || 1, 1);
+    canvas.width = canvas.offsetWidth * ratio;
+    canvas.height = canvas.offsetHeight * ratio;
+    ctx.scale(ratio, ratio);
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "#000";
+
+    let drawing = false;
+    let hasDrawn = false;
+
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const cx = e.touches ? e.touches[0].clientX : e.clientX;
+      const cy = e.touches ? e.touches[0].clientY : e.clientY;
+      return { x: cx - rect.left, y: cy - rect.top };
+    }
+
+    function start(e) {
+      drawing = true;
+      hasDrawn = true;
+      const p = getPos(e);
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+    }
+    function draw(e) {
+      if (!drawing) return;
+      const p = getPos(e);
+      ctx.lineTo(p.x, p.y);
+      ctx.stroke();
+      e.preventDefault();
+    }
+    function stop() { drawing = false; }
+
+    canvas.addEventListener("mousedown", start);
+    canvas.addEventListener("mousemove", draw);
+    window.addEventListener("mouseup", stop);
+
+    canvas.addEventListener("touchstart", start, { passive: false });
+    canvas.addEventListener("touchmove", draw, { passive: false });
+    window.addEventListener("touchend", stop);
+
+    canvasInstances[id] = { canvas, ctx, getHasDrawn: () => hasDrawn, resetDrawn: () => { hasDrawn = false; } };
+  }
+
+  window.clearSignature = function(id) {
+    const item = canvasInstances[id];
+    if (item) {
+      item.ctx.clearRect(0, 0, item.canvas.width, item.canvas.height);
+      item.resetDrawn();
+    }
+  };
+
+  window.removeParticipant = function(id) {
+    const el = document.getElementById(`card-${id}`);
+    if (el) el.remove();
+    delete canvasInstances[id];
+  };
+
+  addParticipant(true);
+
+  document.getElementById("btnAdd").addEventListener("click", () => {
+    addParticipant(false);
+  });
+
+  window.addEventListener("message", (event) => {
+    if (event.data === "SUCCESS") {
+      alert("✅ 全組免責同意書簽署成功！祝您遊戲愉快！");
+      window.location.reload();
+    } else if (typeof event.data === "string" && event.data.startsWith("ERROR")) {
+      alert("儲存失敗：" + event.data);
+      document.getElementById("loadingOverlay").style.display = "none";
+    }
+  });
+
+  document.getElementById("waiverForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const cards = document.querySelectorAll(".participant-card");
+    const participantsData = [];
+
+    for (let card of cards) {
+      const id = card.id.replace("card-", "");
+      const name = card.querySelector(".input-name").value.trim();
+      
+      // 組合 年/月/日
+      const y = card.querySelector(".birth-year").value;
+      const m = card.querySelector(".birth-month").value;
+      const d = card.querySelector(".birth-day").value;
+      
+      if (!y || !m || !d) {
+        alert(`請完整選擇「第 ${id} 位參與者」的出生年、月、日！`);
+        return;
+      }
+      const birth = `${y}/${m}/${d}`;
+
+      const phone = card.querySelector(".input-phone").value.trim();
+      const guardian = card.querySelector(".input-guardian").value.trim();
+      const instance = canvasInstances[id];
+
+      if (!instance || !instance.getHasDrawn()) {
+        alert(`請完成「第 ${id} 位參與者」的手寫簽名！`);
+        return;
+      }
+
+      participantsData.push({
+        name: name,
+        birthDate: birth,
+        phone: phone,
+        guardianName: guardian,
+        signatureBase64: instance.canvas.toDataURL("image/png")
+      });
+    }
+
+    const payload = {
+      signDate: todayStr,
+      participants: participantsData
+    };
+
+    document.getElementById("loadingOverlay").style.display = "flex";
+
+    document.getElementById("hiddenDataInput").value = JSON.stringify(payload);
+    document.getElementById("hiddenForm").submit();
+
+    setTimeout(() => {
+      alert("✅ 同意書已送出！請於雲端硬碟確認檔案。");
+      window.location.reload();
+    }, 6000);
+  });
+</script>
+</body>
+</html>
